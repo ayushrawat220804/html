@@ -1,0 +1,1647 @@
+﻿<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A comprehensive guide to HTML for absolute beginners. Learn to build your first website with practical skills, tags, attributes, and more.">
+    <title>HTML for Absolute Beginners</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --code-bg: #282c34;
+            --light-gray: #f8f9fa;
+            --border-color: #e9ecef;
+            --success-color: #28a745;
+            --warning-bg: #fff3cd;
+            --warning-text: #856404;
+            --font-main: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-code: Consolas, "Courier New", monospace;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header,
+        nav,
+        main,
+        footer {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 0.2em;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        nav {
+            background: var(--primary-color);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #ecf0f1;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--accent-color);
+            text-decoration: none;
+        }
+
+        main {
+            min-height: 600px;
+            padding-top: 50px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 1em;
+            color: var(--primary-color);
+            border-left: 6px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #444;
+            margin-top: 1.5em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+            font-size: 1.1em;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            color: #f8f8f2;
+            padding: 25px;
+            border-radius: 8px 8px 0 0;
+            overflow-x: auto;
+            font-family: var(--font-code);
+            margin: 25px 0 0 0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+        }
+
+        code {
+            font-family: var(--font-code);
+            background: rgba(27, 31, 35, 0.05);
+            color: #e83e8c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+            font-size: 1em;
+        }
+
+        /* Live Example Styling */
+        .live-example {
+            border: 1px solid #ddd;
+            border-top: 1px dashed #555;
+            background: #fff;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .live-example::before {
+            content: "Live Output";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.75em;
+            padding: 4px 12px;
+            border-bottom-left-radius: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Bug Highlight Styling */
+        .bug-alert {
+            background-color: var(--warning-bg);
+            border-left: 6px solid #ffc107;
+            color: var(--warning-text);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 25px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .bug-alert h4 {
+            margin-top: 0;
+            color: #533f03;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .bug-alert h4::before {
+            content: "âš ï¸";
+            margin-right: 10px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul,
+        ol {
+            margin-bottom: 1.5em;
+            padding-left: 40px;
+        }
+
+        li {
+            margin-bottom: 0.8em;
+        }
+
+        footer {
+            margin-top: 0;
+            border-top: 1px solid var(--border-color);
+            background: #f1f3f5;
+            font-size: 0.95em;
+            color: #6c757d;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        a {
+            color: var(--accent-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header itemscope itemtype="https://schema.org/WPHeader">
+        <h1>HTML for Absolute Beginners</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#what-is-html">What is HTML?</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#tags-attributes">Tags &amp; Attributes</a></li>
+            <li><a href="#editors">Editors</a></li>
+            <li><a href="#first-webpage">First Webpage</a></li>
+            <li><a href="#adding-content">Adding Content</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#images">Images</a></li>
+            <li><a href="#lists">Lists</a></li>
+            <li><a href="#tables">Tables</a></li>
+            <li><a href="#bugs">Common Bugs</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#hosting">Hosting</a></li>
+        </ul>
+    </nav>
+
+    <main itemprop="mainContentOfPage">
+
+        <section id="intro">
+            <article>
+                <p>While many guides on the internet attempt to teach HTML using a lot of mind-boggling theory, this
+                    tutorial will instead focus on giving you the practical skills to build your first site.</p>
+                <p>The aim is to show you "˜how' to create your first web page without spending the entire tutorial
+                    focusing too much on the "why."</p>
+                <p>By the end of this tutorial, you will have the know-how to create a basic website and we hope that
+                    this will inspire you to delve further into the world of HTML using our follow-on guides.</p>
+            </article>
+        </section>
+
+        <section id="what-is-html">
+            <article>
+                <h2>What is HTML?</h2>
+                <p>Okay, so this is the only bit of mandatory theory. In order to begin to write HTML, it helps if you
+                    know what you are writing.</p>
+                <p>HTML is the language in which most websites are written. HTML is used to create pages and make them
+                    functional.</p>
+                <p>The code used to make them visually appealing is known as CSS and we shall focus on this in a later
+                    tutorial. For now, we will focus on teaching you how to build rather than design.</p>
+            </article>
+        </section>
+
+        <section id="history">
+            <article>
+                <h2>The History of HTML</h2>
+                <p>HTML was first created by Tim Berners-Lee, Robert Cailliau, and others starting in 1989. It stands
+                    for Hyper Text Markup Language.</p>
+                <p>Hypertext means that the document contains links that allow the reader to jump to other places in the
+                    document or to another document altogether. The latest version is known as HTML5.</p>
+                <p>A Markup Language is a way that computers speak to each other to control how text is processed and
+                    presented. To do this HTML uses two things: tags and attributes.</p>
+            </article>
+        </section>
+
+        <section id="tags-attributes">
+            <article>
+                <h2>What are Tags and Attributes?</h2>
+                <p>Tags and attributes are the basis of HTML.</p>
+                <p>They work together but perform different functions "“ it is worth investing 2 minutes in
+                    differentiating the two.</p>
+
+                <h3>What Are HTML Tags?</h3>
+                <p>Tags are used to mark up the start of an HTML element and they are usually enclosed in angle
+                    brackets. An example of a tag is: <code>&lt;h1&gt;</code>.</p>
+                <p>Most tags must be opened <code>&lt;h1&gt;</code> and closed <code>&lt;/h1&gt;</code> in order to
+                    function.</p>
+
+                <h3>What are HTML Attributes?</h3>
+                <p>Attributes contain additional pieces of information. Attributes take the form of an opening tag and
+                    additional info is placed inside.</p>
+                <p>An example of an attribute is:</p>
+                <pre><code>&lt;img src="testpic.jpg" alt="A photo of my dog."&gt;</code></pre>
+                <div class="live-example">
+                    <img src="testpic.jpg" alt="A photo of my dog." width="42" height="42">
+                    <p><em>(Note: We used 'testpic.jpg' here as a placeholder example)</em></p>
+                </div>
+
+                <p>In this instance, the image source (src) and the alt text (alt) are attributes of the
+                    <code>&lt;img&gt;</code> tag.
+                </p>
+
+                <h3>Golden Rules To Remember</h3>
+                <ul>
+                    <li>The vast majority of tags must be opened (<code>&lt;tag&gt;</code>) and closed
+                        (<code>&lt;/tag&gt;</code>) with the element information such as a title or text resting between
+                        the tags.</li>
+                    <li>When using multiple tags, the tags must be closed in the order in which they were opened. For
+                        example:</li>
+                </ul>
+                <pre><code>&lt;strong&gt;&lt;em&gt;This is really important!&lt;/em&gt;&lt;/strong&gt;</code></pre>
+                <div class="live-example">
+                    <strong><em>This is really important!</em></strong>
+                </div>
+            </article>
+        </section>
+
+        <section id="editors">
+            <article>
+                <h2>HTML Editors</h2>
+                <p>Now that we've gotten the basic theory out of the way. It's time to learn how to build our first
+                    website.</p>
+                <p>First off, we must ensure that we have the right tools. Most important, we need an HTML editor.</p>
+                <p>There are many choices on the market. Here are a handful of the most popular:</p>
+                <!-- Content about editors skipped for brevity in live examples as it's text-heavy -->
+                <h3>Sublime Text 3</h3>
+                <p>However, for this tutorial, we will use the Sublime Text 3 as it is free and also offers
+                    cross-platform support for Windows, Mac, and Linux users.</p>
+                <p><strong>Sublime Text 3</strong><br>Sublime Text 3 has a mini-preview window on the right.</p>
+                <p><strong>Pros</strong></p>
+                <ul>
+                    <li>Easily customizable</li>
+                    <li>Beginner-friendly</li>
+                    <li>Pleasant color schemes to choose from.</li>
+                </ul>
+                <p><strong>Cons</strong></p>
+                <ul>
+                    <li>Can't print documents or code</li>
+                    <li>No toolbar or dashboard available.</li>
+                </ul>
+
+                <h3>Notepad ++</h3>
+                <p>Another common choice for HTML and other language coders is Notepad ++. It is a tiny program to
+                    download and perform the functions you need for writing clean code.</p>
+                <p><strong>HTML Notepad ++</strong><br>This is Notepad ++. Far from glamorous but does the job.</p>
+                <p><strong>Pros</strong></p>
+                <ul>
+                    <li>Distraction-free interface</li>
+                    <li>Auto-completion feature</li>
+                    <li>Plugin options for extended functionalities.</li>
+                </ul>
+                <p><strong>Cons</strong></p>
+                <ul>
+                    <li>Can be difficult to get used to for beginners</li>
+                    <li>No support for Mac.</li>
+                </ul>
+
+                <h3>Komodo Edit</h3>
+                <p>Komodo Edit is one of two editors released by the same label. They offer a simple, open-source editor
+                    with a variety of extensions and language support.</p>
+                <p>It is free to download.</p>
+                <p><strong>Komodo Editor</strong><br>Komodo isn't one for a flash interface either but is simple to use.
+                </p>
+                <p><strong>Pros</strong></p>
+                <ul>
+                    <li>Easy-to-grasp coding interface</li>
+                    <li>Available for Mac, Windows, and Linux</li>
+                    <li>Impressive language support.</li>
+                </ul>
+                <p><strong>Cons</strong></p>
+                <ul>
+                    <li>No autocompletion by default</li>
+                    <li>Visual settings are difficult to find and change.</li>
+                </ul>
+
+                <h3>What To Avoid</h3>
+                <p>Your code's front-end view varies from browser to browser "“ you will learn more about this with
+                    advanced CSS.</p>
+                <p>Do not use Microsoft Word or any other word processor when writing HTML code, only an HTML editor or
+                    at the very least, your machine's builtin notepad, is suitable for the task.</p>
+                <p>Secondly, ensure that you've installed a number of different browsers such as Chrome and Firefox in
+                    order to preview your upcoming creation.</p>
+            </article>
+        </section>
+
+        <section id="first-webpage">
+            <article>
+                <h2>Creating Your First HTML Webpage</h2>
+                <p>First off, you need to open your HTML editor, where you will find a clean white page on which to
+                    write your code.</p>
+                <p>From there you need to layout your page with the following tags.</p>
+
+                <h3>Basic Construction of an HTML Page</h3>
+                <p>These tags should be placed underneath each other at the top of every HTML page that you create.</p>
+                <p><code>&lt;!DOCTYPE html&gt;</code> "” This tag specifies the language you will write on the page. In
+                    this case, the language is HTML 5.</p>
+                <p><code>&lt;html&gt;</code> "” This tag signals that from here on we are going to write in HTML code.
+                </p>
+                <p><code>&lt;head&gt;</code> "” This is where all the metadata for the page goes "” stuff mostly meant
+                    for
+                    search engines and other computer programs.</p>
+                <p><code>&lt;body&gt;</code> "” This is where the content of the page goes.</p>
+
+                <h3>HTML Structure</h3>
+                <p>This is how your average HTML page is structured visually.</p>
+
+                <h3>Further Tags</h3>
+                <p>Inside the <code>&lt;head&gt;</code> tag, there is one tag that is always included:
+                    <code>&lt;title&gt;</code>, but there are others that are just as important:
+                </p>
+                <dl>
+                    <dt><code>&lt;title&gt;</code></dt>
+                    <dd>This is where we insert the page name as it will appear at the top of the browser window or tab.
+                    </dd>
+                    <dt><code>&lt;meta&gt;</code></dt>
+                    <dd>This is where information about the document is stored: character encoding, name (page context),
+                        description.</dd>
+                </dl>
+                <p>Let's try out a basic <code>&lt;head&gt;</code> section:</p>
+                <pre><code>&lt;head&gt;
+&lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="This field contains information about your page. It is usually around two sentences long."&gt;.
+&lt;meta name="author" content="Conor Sheils"&gt;
+&lt;/header&gt;</code></pre>
+                <div class="live-example">
+                    <p><em>(The head section is invisible to the user, but sets the title you see in the browser
+                            tab!)</em></p>
+                </div>
+            </article>
+        </section>
+
+        <section id="adding-content">
+            <article>
+                <h2>Adding Content</h2>
+                <p>Next, we will make <code>&lt;body&gt;</code> tag.</p>
+                <p>The HTML <code>&lt;body&gt;</code> is where we add the content which is designed for viewing by human
+                    eyes.</p>
+                <p>This includes text, images, tables, forms and everything else that we see on the internet each day.
+                </p>
+
+                <h3>How to Add HTML Headings To Your Web Page</h3>
+                <p>In HTML, headings are written in the following elements:</p>
+                <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+                <div class="live-example">
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                </div>
+
+                <p>As you might have guessed <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code> should be used for the
+                    most important titles, while the remaining tags should be used for sub-headings and less important
+                    text.</p>
+                <p>Search engine bots use this order when deciphering which information is most important on a page.</p>
+
+                <h3>Creating Your Heading</h3>
+                <p>Let's try it out. On a new line in the HTML editor, type:</p>
+                <pre><code>&lt;h1&gt;Welcome to My Page&lt;/h1&gt;</code></pre>
+                <div class="live-example">
+                    <h1>Welcome to My Page</h1>
+                </div>
+
+                <p>And hit save. We will save this file as "index.html" in a new folder called "my webpage."</p>
+                <p>The Moment of Truth: Click the newly saved file and your first ever web page should open in your
+                    default browser. It may not be pretty it's yours"¦ all yours. *Evil laugh*</p>
+                <p>Well let's not get carried away; we've still got loads of great features that we can add to your
+                    page.</p>
+
+                <h3>How To Add Text In HTML</h3>
+                <p>Adding text to our HTML page is simple using an element opened with the tag <code>&lt;p&gt;</code>
+                    which creates a new paragraph. We place all of our regular text inside the element
+                    <code>&lt;p&gt;</code>.
+                </p>
+                <p>When we write text in HTML, we also have a number of other elements we can use to control the text or
+                    make it appear in a certain way.</p>
+
+                <h3>Other Key Elements</h3>
+                <p>They are as follows:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Meaning</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;b&gt;</code></td>
+                            <td>Bold</td>
+                            <td>Highlight important information</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;strong&gt;</code></td>
+                            <td>Strong</td>
+                            <td>Similarly to bold, to highlight key text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;i&gt;</code></td>
+                            <td>Italic</td>
+                            <td>To denote text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;em&gt;</code></td>
+                            <td>Emphasised Text</td>
+                            <td>Usually used as image captions</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;mark&gt;</code></td>
+                            <td>Marked Text</td>
+                            <td>Highlight the background of the text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;small&gt;</code></td>
+                            <td>Small Text</td>
+                            <td>To shrink the text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;strike&gt;</code></td>
+                            <td>Striked Out Text</td>
+                            <td>To place a horizontal line across the text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;u&gt;</code></td>
+                            <td>Underlined Text</td>
+                            <td>Used for links or text highlights</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;ins&gt;</code></td>
+                            <td>Inserted Text</td>
+                            <td>Displayed with an underline to show an inserted text</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;sub&gt;</code></td>
+                            <td>Subscript Text</td>
+                            <td>Typographical stylistic choice</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;sup&gt;</code></td>
+                            <td>Superscript Text</td>
+                            <td>Another typographical presentation style</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>These tags must be opened and closed around the text in question.</p>
+                <p>Let's try it out. On a new line in the HTML editor, type the following HTML code:</p>
+                <pre><code>&lt;p&gt;Welcome to &lt;em&gt;my&lt;/em&gt; brand new website. This site will be my &lt;strong&gt;new&lt;strong&gt; home on the web.&lt;/p&gt;</code></pre>
+                <div class="live-example">
+                    <p>Welcome to <em>my</em> brand new website. This site will be my <strong>new</strong> home on the
+                        web.</p>
+                </div>
+                <p>Don't forget to hit save and then refresh the page in your browser to see the results.</p>
+            </article>
+        </section>
+
+        <section id="links">
+            <article>
+                <h2>How To Add Links In HTML</h2>
+                <p>As you may have noticed, the internet is made up of lots of links.</p>
+                <p>Almost everything you click on while surfing the web is a link takes you to another page within the
+                    website you are visiting or to an external site.</p>
+                <p>Links are included in an attribute opened by the <code>&lt;a&gt;</code> tag. This element is the
+                    first that we've met which uses an attribute and so it looks different to previously mentioned tags.
+                </p>
+
+                <h3>The Anchor Tag</h3>
+                <p>The <code>&lt;a&gt;</code> (or anchor) opening tag is written in the format:</p>
+                <pre><code>&lt;a href="https://blogging.com/how-to-start-a-blog/"&gt;Your Link Text Here &lt;/a&gt;</code></pre>
+                <div class="live-example">
+                    <a href="https://blogging.com/how-to-start-a-blog/" target="_blank" rel="noopener noreferrer">Your
+                        Link Text Here</a>
+                </div>
+
+                <p>The first part of the attribute points to the page that will open once the link is clicked.</p>
+                <p>Meanwhile, the second part of the attribute contains the text which will be displayed to a visitor in
+                    order to entice them to click on that link.</p>
+                <p>If you are building your own website then you will most likely host all of your pages on professional
+                    web hosting. In this case, internal links on your website will
+                    <code>&lt;a href="mylinkedpage.html"&gt;Link Title Here&lt;/a&gt;</code>.
+                </p>
+
+                <h3>Let's Create An Anchor Tag</h3>
+                <p>Let's try it out. Make a duplicate of the code from your current index.html page. Copy / paste it
+                    into a new window in your HTML editor.</p>
+                <p>Save this new page as "page2.html" and ensure that it is saved in the same folder as your
+                    index.html
+                    page.</p>
+                <p>On page2.html add the following code:</p>
+                <pre><code>&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;</code></pre>
+                <div class="live-example">
+                    <a href="http://www.google.com" target="_blank" rel="noopener noreferrer">Google</a>
+                </div>
+
+                <p>This will create a link to Google on page 2. Hit save and return to your index.html page.</p>
+                <p>On a new line on index.html add the following code:</p>
+                <pre><code>&lt;a href="*folder(s)*/page2.html"&gt;Page2&lt;/a&gt;</code></pre>
+                <div class="live-example">
+                    <a href="#">Page2</a> <em>(This link won't work here as page2.html doesn't exist!)</em>
+                </div>
+
+                <p>Ensure the folder path to the file (page2.html) is correct. Hit save and preview index.html in your
+                    browser.</p>
+                <p>If everything is correct then you will see a link which will take you to your second page. On the
+                    second page, there will be a link that will take you to google.com.</p>
+            </article>
+        </section>
+
+        <section id="images">
+            <article>
+                <h2>How To Add Images In HTML To Your Website</h2>
+                <p>In today's modern digital world, images are everything. The <code>&lt;img&gt;</code> tag has
+                    everything you need to display images on your site. Much like the <code>&lt;a&gt;</code> anchor
+                    element, <code>&lt;img&gt;</code> also contains an attribute.</p>
+                <p>The attribute features information for your computer regarding the source, height, width and alt text
+                    of the image.</p>
+
+                <h3>Styling and Formats</h3>
+                <p><strong>Image Property</strong><br>You can check the file type of an image by right-clicking the item
+                    and selecting "˜Properties'.</p>
+                <p>You can also define borders and other styles around the image using the class attribute. However, we
+                    shall cover this in a later tutorial.</p>
+                <p>The file types generally used for image files online are: .jpg, .png, and (less and less) .gif.</p>
+                <p>Alt text is important to ensure that your site is ranked correctly on search sites and also for
+                    visually impaired visitors to your site.</p>
+                <p>The <code>&lt;img&gt;</code> tag normally is written as follows:</p>
+                <pre><code>&lt;img src="yourimage.jpg" alt="Describe the image" height="X" width="X"&gt;</code></pre>
+                <p>Let's try it out.</p>
+
+                <h3>Create Your Own Image With An Alt Text</h3>
+                <p>Don't be afraid to play around with the test code "“ it's a great way to have fun while learning.
+                </p>
+                <p>Save an image (.jpg, .png, .gif format) of your choice in the same folder where you've saved
+                    index.html and page2.html. Call this image "testpic.jpg."</p>
+                <p>On a new line in your HTML editor enter the following code:</p>
+                <pre><code>&lt;img src="testpic.jpg" alt="This is a test image" height="42" width="42"&gt;</code></pre>
+                <div class="live-example">
+                    <img src="testpic.jpg" alt="This is a test image" height="42" width="42">
+                </div>
+
+                <p>Hit save and preview the index.html page in your browser.</p>
+            </article>
+        </section>
+
+        <section id="lists">
+            <article>
+                <h2>How To Make an HTML List</h2>
+                <p>In web design, there are 3 different types of lists which you may wish to add to your site.</p>
+
+                <h3>Ordered List</h3>
+                <p>The first is an <code>&lt;ol&gt;</code>: This is an ordered list of contents. For example:</p>
+                <ol>
+                    <li>An item</li>
+                    <li>Another item</li>
+                    <li>Another goes here.</li>
+                </ol>
+                <p>Inside the <code>&lt;ol&gt;</code> tag we list each item on the list inside
+                    <code>&lt;li&gt; &lt;/li&gt;</code> tags.
+                </p>
+                <p>For example:</p>
+                <pre><code>&lt;ol&gt;
+&lt;li&gt;An item &lt;/li&gt;
+&lt;li&gt;Another item &lt;/li&gt;
+&lt;li&gt;Another goes here &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                <div class="live-example">
+                    <ol>
+                        <li>An item </li>
+                        <li>Another item </li>
+                        <li>Another goes here </li>
+                    </ol>
+                </div>
+
+                <h3>Unordered List</h3>
+                <p>The second type of list that you may wish to include is an <code>&lt;ul&gt;</code> unordered list.
+                    This is better known as a bullet point list and contains no numbers.</p>
+                <p>An example of this is:</p>
+                <pre><code>&lt;ul&gt;
+&lt;li&gt;This is &lt;/li&gt;
+&lt;li&gt;An Unordered &lt;/li&gt;
+&lt;li&gt;List &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <div class="live-example">
+                    <ul>
+                        <li>This is </li>
+                        <li>An Unordered </li>
+                        <li>List </li>
+                    </ul>
+                </div>
+
+                <h3>Definition List</h3>
+                <p>Finally, you may wish to include a definition list <code>&lt;dl&gt;</code> on your page. An example
+                    of a <code>&lt;dl&gt;</code> list is as follows:</p>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>Hypertext markup language is a programming language used to create web pages and is rendered by
+                        a web browser.</dd>
+                </dl>
+                <p>The code used for the above is as follows:</p>
+                <pre><code>&lt;dl&gt;
+&lt;dt&gt;Item&lt;/dt&gt;
+&lt;dd&gt;The definition goes here&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                <div class="live-example">
+                    <dl>
+                        <dt>Item</dt>
+                        <dd>The definition goes here</dd>
+                    </dl>
+                </div>
+
+                <p>Let's try it out. Open index.html and on a new line, enter the following HTML:</p>
+                <pre><code>&lt;p&gt;This website will have the following benefits for my business:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Increased traffic &lt;/li&gt;
+&lt;li&gt;Global Reach&lt;/li&gt;
+&lt;li&gt;Promotional Opportunities&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <div class="live-example">
+                    <p>This website will have the following benefits for my business:</p>
+                    <ul>
+                        <li>Increased traffic </li>
+                        <li>Global Reach</li>
+                        <li>Promotional Opportunities</li>
+                    </ul>
+                </div>
+
+                <p>Now hit save and check out the results in your browser. If everything worked out then it will display
+                    a bullet-pointed table displaying the information above.</p>
+            </article>
+        </section>
+
+        <section id="tables">
+            <article>
+                <h2>How To Add Tables In HTML</h2>
+                <h3>HTML Tables</h3>
+                <p>Tables can be styled in various ways "“ Codepen.io offers live previews to keep track of changes.
+                </p>
+                <p>Another way to keep your website looking neat and orderly is through the use of a table.</p>
+                <p>Do not use a table to layout your website. Search engines hate it and it is generally a bad idea.
+                    Just"¦ don't. See our CSS tutorial, instead.</p>
+                <p>This is definitely the most complicated part of this tutorial, however, learning it will certainly
+                    pay off in the long-run.</p>
+                <p>With this in mind, tables can still be a useful way to present content on your page.</p>
+
+                <h3>What Does a Table Consist Of?</h3>
+                <p>When drawing a table we must open an element with the <code>&lt;table&gt;</code> opening tag. Inside
+                    this tag, we structure the table using the table rows, <code>&lt;tr&gt;</code>, and cells,
+                    <code>&lt;td&gt;</code>.
+                </p>
+                <p>An example of an HTML table is as follows:</p>
+                <pre><code>&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 1 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 1 - Colunm 2 &lt;/td&gt;
+&lt;td&gt;Row 1 - Column 3 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 2 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 2&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                <div class="live-example">
+                    <table>
+                        <tr>
+                            <td>Row 1 - Column 1</td>
+                            <td>Row 1 - Colunm 2 </td>
+                            <td>Row 1 - Column 3 </td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 - Column 1</td>
+                            <td>Row 2 - Column 2</td>
+                            <td>Row 2 - Column 3</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>This will produce a 2-row table with 3 cells in each row.</p>
+                <p>Tables can get quite complicated, so be sure to check out our special HTML tables tutorial.</p>
+
+                <h3>Table Tags</h3>
+                <p>However, watch out for these tags so that you can recognize them and use them as your skills develop.
+                </p>
+                <p>Here are the tables tags presented in a table "“ pun totally intended.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table Tag</th>
+                            <th>Meaning</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;thead&gt;</code></td>
+                            <td>Table Head</td>
+                            <td>Top of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tbody&gt;</code></td>
+                            <td>Table Body</td>
+                            <td>Content of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tfoot&gt;</code></td>
+                            <td>Table Foot</td>
+                            <td>Bottom of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;colgroup&gt;</code></td>
+                            <td>Column Group</td>
+                            <td>Within the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;th&gt;</code></td>
+                            <td>Table Header</td>
+                            <td>Data cell for the table header</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Tables, borders, spacing are usually styled using CSS but we will cover this in a later tutorial.</p>
+
+                <h3>Let's Make a Table</h3>
+                <p>Go to a new line on the index.html page within your text editor. Enter the following HTML code:</p>
+                <pre><code>&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 1 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 1 - Column 2 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 2 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                <div class="live-example">
+                    <table>
+                        <tr>
+                            <td>Row 1 - Column 1</td>
+                            <td>Row 1 - Column 2 </td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 - Column 1</td>
+                            <td>Row 2 - Column 2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>Hit save and preview it in your browser.</p>
+                <p>Congratulations: You did it!</p>
+            </article>
+        </section>
+
+        <section id="bugs">
+            <article>
+                <h2>Common Bugs &amp; Troubleshooting</h2>
+                <p>Even experienced developers make mistakes. Here are some common HTML bugs you might encounter and how
+                    to fix them.</p>
+
+                <div class="bug-alert">
+                    <h4>1. Unclosed Tags</h4>
+                    <p><strong>The Bug:</strong> Forgetting to close a tag like <code>&lt;strong&gt;</code> or
+                        <code>&lt;div&gt;</code>.
+                    </p>
+                    <p><strong>The Result:</strong> The styling or layout usually "leaks" into the rest of the page. For
+                        example, if you don't close a bold tag, <strong>everything after it will be bold
+                            forever!</strong></p>
+                    <p><strong>The Fix:</strong> Always check that every opening tag has a matching closing tag. Use
+                        indentation to keep track.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>2. Broken Images (404)</h4>
+                    <p><strong>The Bug:</strong> Typo in the filename or wrong path (e.g., <code>src="img.jpg"</code>
+                        instead of <code>src="images/img.jpg"</code>).</p>
+                    <p><strong>The Result:</strong> A broken image icon appears.</p>
+                    <p><strong>The Fix:</strong> Check the file name and folder path carefully. Ensure the file
+                        extension (.jpg, .png) matches exactly.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>3. Broken Links</h4>
+                    <p><strong>The Bug:</strong> <code>href="google.com"</code> instead of
+                        <code>href="https://google.com"</code>.
+                    </p>
+                    <p><strong>The Result:</strong> The browser tries to find a file named "google.com" on your computer
+                        instead of going to the website.</p>
+                    <p><strong>The Fix:</strong> Always include <code>http://</code> or <code>https://</code> for
+                        external links.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>4. Table Layout Issues</h4>
+                    <p><strong>The Bug:</strong> Uneven number of <code>&lt;td&gt;</code> cells in your
+                        <code>&lt;tr&gt;</code> rows.
+                    </p>
+                    <p><strong>The Result:</strong> The table looks jagged or cells are missing borders.</p>
+                    <p><strong>The Fix:</strong> Count your cells! Ensure every row has the same number of cells, or use
+                        <code>colspan</code> if you intend to merge them.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <section id="closing">
+            <article>
+                <h2>How To Close an HTML Document</h2>
+                <p>You've reached the end of our absolute beginners HTML tutorial.</p>
+                <p>The final step we need to complete is to close the <code>&lt;body&gt;</code> and
+                    <code>&lt;html&gt;</code> tags at the end of each page using the following HTML code:
+                </p>
+                <pre><code>&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>In this guide, you've learned how to create basic HTML web pages.</p>
+                <p>You've also learned to add headings, text, images, links, lists and basic tables to these pages.</p>
+
+                <h3>What's Next?</h3>
+                <p>You can now use this knowledge to create your own web pages containing these features and link them
+                    together.</p>
+                <p>We suggest that you further enhance your skills by experimenting with the code you've learned using
+                    different variables. You may also wish to learn about how to make your pages beautiful using CSS.
+                </p>
+                <p>The power to create your own website is now in your hands.</p>
+            </article>
+        </section>
+
+        <section id="troubleshooting">
+            <article>
+                <h2>Troubleshooting Code Examples</h2>
+                <p>In case things didn't work out as intended, simply check your HTML code against the examples below.
+                </p>
+                <p>Index.html troubleshooting code:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="This is my first website. It includes lots of information about my life."&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to my webpage&lt;/h1&gt;
+&lt;p&gt;Welcome to &lt;em&gt;my&lt;/em&gt; brand new website.&lt;/p&gt;
+&lt;p&gt;This site will be my &lt;strong&gt;new&lt;/strong&gt; home on the web.&lt;/p&gt;
+&lt;a href="/page2.html"&gt;Page2&lt;/a&gt;
+&lt;img src="testpic.jpg" alt="This is a test image" height="42" width="42"&gt;
+&lt;p&gt;This website will have the following benefits for my business:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Increased traffic &lt;/li&gt;
+&lt;li&gt;Global Reach&lt;/li&gt;
+&lt;li&gt;Promotional Opportunities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 1 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 1 - Column 2 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 2 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>page2.html troubleshooting code:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="This is my first website. It includes lots of information about my life."&gt;
+                    </table>
+                </div>
+
+                <p>This will produce a 2-row table with 3 cells in each row.</p>
+                <p>Tables can get quite complicated, so be sure to check out our special HTML tables tutorial.</p>
+
+                <h3>Table Tags</h3>
+                <p>However, watch out for these tags so that you can recognize them and use them as your skills develop.
+                </p>
+                <p>Here are the tables tags presented in a table "“ pun totally intended.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table Tag</th>
+                            <th>Meaning</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;thead&gt;</code></td>
+                            <td>Table Head</td>
+                            <td>Top of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tbody&gt;</code></td>
+                            <td>Table Body</td>
+                            <td>Content of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tfoot&gt;</code></td>
+                            <td>Table Foot</td>
+                            <td>Bottom of the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;colgroup&gt;</code></td>
+                            <td>Column Group</td>
+                            <td>Within the table</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;th&gt;</code></td>
+                            <td>Table Header</td>
+                            <td>Data cell for the table header</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Tables, borders, spacing are usually styled using CSS but we will cover this in a later tutorial.</p>
+
+                <h3>Let's Make a Table</h3>
+                <p>Go to a new line on the index.html page within your text editor. Enter the following HTML code:</p>
+                <pre><code>&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 1 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 1 - Column 2 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 2 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                <div class="live-example">
+                    <table>
+                        <tr>
+                            <td>Row 1 - Column 1</td>
+                            <td>Row 1 - Column 2 </td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 - Column 1</td>
+                            <td>Row 2 - Column 2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>Hit save and preview it in your browser.</p>
+                <p>Congratulations: You did it!</p>
+            </article>
+        </section>
+
+        <section id="bugs">
+            <article>
+                <h2>Common Bugs &amp; Troubleshooting</h2>
+                <p>Even experienced developers make mistakes. Here are some common HTML bugs you might encounter and how
+                    to fix them.</p>
+
+                <div class="bug-alert">
+                    <h4>1. Unclosed Tags</h4>
+                    <p><strong>The Bug:</strong> Forgetting to close a tag like <code>&lt;strong&gt;</code> or
+                        <code>&lt;div&gt;</code>.
+                    </p>
+                    <p><strong>The Result:</strong> The styling or layout usually "leaks" into the rest of the page. For
+                        example, if you don't close a bold tag, <strong>everything after it will be bold
+                            forever!</strong></p>
+                    <p><strong>The Fix:</strong> Always check that every opening tag has a matching closing tag. Use
+                        indentation to keep track.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>2. Broken Images (404)</h4>
+                    <p><strong>The Bug:</strong> Typo in the filename or wrong path (e.g., <code>src="img.jpg"</code>
+                        instead of <code>src="images/img.jpg"</code>).</p>
+                    <p><strong>The Result:</strong> A broken image icon appears.</p>
+                    <p><strong>The Fix:</strong> Check the file name and folder path carefully. Ensure the file
+                        extension (.jpg, .png) matches exactly.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>3. Broken Links</h4>
+                    <p><strong>The Bug:</strong> <code>href="google.com"</code> instead of
+                        <code>href="https://google.com"</code>.
+                    </p>
+                    <p><strong>The Result:</strong> The browser tries to find a file named "google.com" on your computer
+                        instead of going to the website.</p>
+                    <p><strong>The Fix:</strong> Always include <code>http://</code> or <code>https://</code> for
+                        external links.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>4. Table Layout Issues</h4>
+                    <p><strong>The Bug:</strong> Uneven number of <code>&lt;td&gt;</code> cells in your
+                        <code>&lt;tr&gt;</code> rows.
+                    </p>
+                    <p><strong>The Result:</strong> The table looks jagged or cells are missing borders.</p>
+                    <p><strong>The Fix:</strong> Count your cells! Ensure every row has the same number of cells, or use
+                        <code>colspan</code> if you intend to merge them.
+                    </p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>5. Improper Nesting</h4>
+                    <p><strong>The Bug:</strong> Closing tags in the wrong order, like
+                        <code>&lt;b&gt;&lt;i&gt;Text&lt;/b&gt;&lt;/i&gt;</code>.
+                    </p>
+                    <p><strong>The Result:</strong> The browser may get confused and render the layout unexpectedly.</p>
+                    <p><strong>The Fix:</strong> Follow the "First In, Last Out" rule. If you open
+                        <code>&lt;b&gt;</code> then <code>&lt;i&gt;</code>, you must close <code>&lt;/i&gt;</code>
+                        before <code>&lt;/b&gt;</code>.
+                    </p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>6. Missing Alt Text</h4>
+                    <p><strong>The Bug:</strong> Leaving out the <code>alt</code> attribute on images.</p>
+                    <p><strong>The Result:</strong> Screen readers can't describe the image to visually impaired users,
+                        and search engines won't know what the image is about.</p>
+                    <p><strong>The Fix:</strong> Always add a descriptive <code>alt="Description of image"</code> to
+                        every <code>&lt;img&gt;</code> tag.</p>
+                </div>
+
+                <div class="bug-alert">
+                    <h4>7. Case Sensitivity</h4>
+                    <p><strong>The Bug:</strong> Referencing <code>MyImage.jpg</code> when the file is actually named
+                        <code>myimage.jpg</code>.
+                    </p>
+                    <p><strong>The Result:</strong> It might work on your computer (Windows is often case-insensitive),
+                        but it will break when you upload it to a web server (usually Linux, which is case-sensitive).
+                    </p>
+                    <p><strong>The Fix:</strong> Always use lowercase filenames and match them exactly in your code.</p>
+                </div>
+            </article>
+        </section>
+
+        <section id="closing">
+            <article>
+                <h2>How To Close an HTML Document</h2>
+                <p>You've reached the end of our absolute beginners HTML tutorial.</p>
+                <p>The final step we need to complete is to close the <code>&lt;body&gt;</code> and
+                    <code>&lt;html&gt;</code> tags at the end of each page using the following HTML code:
+                </p>
+                <pre><code>&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>In this guide, you've learned how to create basic HTML web pages.</p>
+                <p>You've also learned to add headings, text, images, links, lists and basic tables to these pages.</p>
+
+                <h3>What's Next?</h3>
+                <p>You can now use this knowledge to create your own web pages containing these features and link them
+                    together.</p>
+                <p>We suggest that you further enhance your skills by experimenting with the code you've learned using
+                    different variables. You may also wish to learn about how to make your pages beautiful using CSS.
+                </p>
+                <p>The power to create your own website is now in your hands.</p>
+            </article>
+        </section>
+
+        <section id="troubleshooting">
+            <article>
+                <h2>Troubleshooting Code Examples</h2>
+                <p>In case things didn't work out as intended, simply check your HTML code against the examples below.
+                </p>
+                <p>Index.html troubleshooting code:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="This is my first website. It includes lots of information about my life."&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to my webpage&lt;/h1&gt;
+&lt;p&gt;Welcome to &lt;em&gt;my&lt;/em&gt; brand new website.&lt;/p&gt;
+&lt;p&gt;This site will be my &lt;strong&gt;new&lt;/strong&gt; home on the web.&lt;/p&gt;
+&lt;a href="/page2.html"&gt;Page2&lt;/a&gt;
+&lt;img src="testpic.jpg" alt="This is a test image" height="42" width="42"&gt;
+&lt;p&gt;This website will have the following benefits for my business:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Increased traffic &lt;/li&gt;
+&lt;li&gt;Global Reach&lt;/li&gt;
+&lt;li&gt;Promotional Opportunities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 1 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 1 - Column 2 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Row 2 - Column 1&lt;/td&gt;
+&lt;td&gt;Row 2 - Column 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>page2.html troubleshooting code:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="This is my first website. It includes lots of information about my life."&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to my webpage&lt;/h1&gt;
+&lt;p&gt;Welcome to &lt;em&gt;my&lt;/em&gt; brand new website.&lt;/p&gt;
+&lt;p&gt;This site will be my &lt;strong&gt;new&lt;strong&gt; home on the web.&lt;/p&gt;
+&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </article>
+        </section>
+
+        <section id="cheat-sheet">
+            <article>
+                <h2>HTML5 Cheat Sheet</h2>
+                <p>A comprehensive reference for all your HTML needs. Bookmark this page for quick access!</p>
+
+                <h3>Document Structure</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                            <td>Declares the document type as HTML5.</td>
+                            <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;html&gt;</code></td>
+                            <td>Root element of the page.</td>
+                            <td><code>&lt;html lang="en"&gt;...&lt;/html&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;head&gt;</code></td>
+                            <td>Contains metadata (title, styles, meta tags).</td>
+                            <td><code>&lt;head&gt;...&lt;/head&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;title&gt;</code></td>
+                            <td>Sets the title shown in the browser tab.</td>
+                            <td><code>&lt;title&gt;My Page&lt;/title&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;body&gt;</code></td>
+                            <td>Contains the visible page content.</td>
+                            <td><code>&lt;body&gt;...&lt;/body&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Text Formatting</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                            <th>Live Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td>
+                            <td>Headings (h1 is largest).</td>
+                            <td>
+                                <h1>H1</h1>
+                                <h3>H3</h3>
+                                <h6>H6</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;p&gt;</code></td>
+                            <td>Paragraph.</td>
+                            <td>
+                                <p>This is a paragraph.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;strong&gt;</code></td>
+                            <td>Important text (Bold).</td>
+                            <td><strong>Bold Text</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;em&gt;</code></td>
+                            <td>Emphasized text (Italic).</td>
+                            <td><em>Italic Text</em></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;br&gt;</code></td>
+                            <td>Line break.</td>
+                            <td>Line 1<br>Line 2</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;hr&gt;</code></td>
+                            <td>Horizontal rule (Thematic break).</td>
+                            <td>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;blockquote&gt;</code></td>
+                            <td>Block quotation.</td>
+                            <td>
+                                <blockquote>"To be or not to be."</blockquote>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;code&gt;</code></td>
+                            <td>Inline code snippet.</td>
+                            <td><code>print("Hello")</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Links &amp; Images</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                            <th>Attributes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;a&gt;</code></td>
+                            <td>Anchor (Link).</td>
+                            <td><code>href="url"</code>, <code>target="_blank"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;img&gt;</code></td>
+                            <td>Image embed.</td>
+                            <td><code>src="url"</code>, <code>alt="text"</code>, <code>width="px"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Lists</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;ul&gt;</code></td>
+                            <td>Unordered List (Bullets).</td>
+                            <td>
+                                <ul>
+                                    <li>Item A</li>
+                                    <li>Item B</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;ol&gt;</code></td>
+                            <td>Ordered List (Numbers).</td>
+                            <td>
+                                <ol>
+                                    <li>First</li>
+                                    <li>Second</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;li&gt;</code></td>
+                            <td>List Item (used in ul/ol).</td>
+                            <td><code>&lt;li&gt;Item&lt;/li&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;dl&gt;</code></td>
+                            <td>Description List.</td>
+                            <td>
+                                <dl>
+                                    <dt>Term</dt>
+                                    <dd>Definition</dd>
+                                </dl>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Tables</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;table&gt;</code></td>
+                            <td>Wrapper for the table.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tr&gt;</code></td>
+                            <td>Table Row.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;th&gt;</code></td>
+                            <td>Table Header Cell (Bold, centered).</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;td&gt;</code></td>
+                            <td>Table Data Cell.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;thead&gt;</code></td>
+                            <td>Group header content.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tbody&gt;</code></td>
+                            <td>Group body content.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Forms &amp; Input</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;form&gt;</code></td>
+                            <td>Form container.</td>
+                            <td><code>&lt;form action="..."&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;input&gt;</code></td>
+                            <td>Input field.</td>
+                            <td><input type="text" placeholder="Text Input"></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;textarea&gt;</code></td>
+                            <td>Multiline text input.</td>
+                            <td><textarea rows="2">Type here...</textarea></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;button&gt;</code></td>
+                            <td>Clickable button.</td>
+                            <td><button>Click Me</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;label&gt;</code></td>
+                            <td>Label for input.</td>
+                            <td><label>Name:</label></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;select&gt;</code></td>
+                            <td>Dropdown list.</td>
+                            <td>
+                                <select>
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Semantic HTML5</h3>
+                <p>Use these tags to give meaning to your page structure.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;header&gt;</code></td>
+                            <td>Introductory content or navigation links.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;nav&gt;</code></td>
+                            <td>Navigation links.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;main&gt;</code></td>
+                            <td>Dominant content of the body.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;section&gt;</code></td>
+                            <td>Thematic grouping of content.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;article&gt;</code></td>
+                            <td>Self-contained composition (blog post, news).</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Sidebar or content tangentially related.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;footer&gt;</code></td>
+                            <td>Footer for a section or page.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Common Character Entities</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Character</th>
+                            <th>Entity Name</th>
+                            <th>Entity Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><code>&amp;nbsp;</code></td>
+                            <td><code>&amp;#160;</code></td>
+                        </tr>
+                        <tr>
+                            <td>&lt;</td>
+                            <td><code>&amp;lt;</code></td>
+                            <td><code>&amp;#60;</code></td>
+                        </tr>
+                        <tr>
+                            <td>&gt;</td>
+                            <td><code>&amp;gt;</code></td>
+                            <td><code>&amp;#62;</code></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;</td>
+                            <td><code>&amp;amp;</code></td>
+                            <td><code>&amp;#38;</code></td>
+                        </tr>
+                        <tr>
+                            <td>&copy;</td>
+                            <td><code>&amp;copy;</code></td>
+                            <td><code>&amp;#169;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+    </main>
+
+    <footer itemscope itemtype="https://schema.org/WPFooter">
+        <p>&copy; HTML.com. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
